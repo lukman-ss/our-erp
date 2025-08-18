@@ -66,3 +66,13 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/productions/{id}/start',  [ProductionController::class, 'start']);   // mark as in_progress
     Route::post('/productions/{id}/finish', [ProductionController::class, 'finish']);  // mark as finished
 });
+
+use App\Http\Controllers\Backend\SaleController;
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/sales/datatable', [SaleController::class, 'datatable']);
+    Route::get('/sales/{id}',      [SaleController::class, 'show']);
+    Route::post('/sales',          [SaleController::class, 'store']);
+    Route::put('/sales/{id}',      [SaleController::class, 'update']);
+    Route::delete('/sales/{id}',   [SaleController::class, 'destroy']);
+});
