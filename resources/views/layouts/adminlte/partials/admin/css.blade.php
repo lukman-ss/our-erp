@@ -1,3 +1,6 @@
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      crossorigin="anonymous">
 <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
@@ -35,33 +38,3 @@
 
   <!--begin::Required Plugin(AdminLTE)-->
   <link rel="stylesheet" href="{{ asset('adminlte/css/adminlte.css') }}">
-  <style>
-  .skeleton {
-    position: relative;
-    overflow: hidden;
-    background-color: #e2e5e7;
-  }
-
-  .skeleton::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    animation: shimmer 1.5s infinite;
-  }
-
-  @keyframes shimmer {
-    100% {
-      left: 100%;
-    }
-  }
-
-  .skeleton-text {
-    height: 1.5rem;
-    width: 60px;
-    border-radius: 4px;
-  }
-</style>

@@ -20,22 +20,38 @@ class SaleController extends Controller
     public function datatable(Request $request): JsonResponse
     {
         try {
-            DB::beginTransaction();
-
             $query = Sale::query()
                 ->withCount('items')
                 ->leftJoin('customers', 'customers.id', '=', 'sales.customer_id')
                 ->select([
-                    'sales.id','sales.code','sales.customer_id','sales.sale_date',
-                    'sales.total_amount','sales.status','sales.created_at',
-                    DB::raw('COALESCE(customers.name, "-") as customer_name')
-                ])
-                ->orderByDesc('sales.sale_date')
-                ->orderByDesc('sales.created_at');
+                    'sales.id',
+                    'sales.code',
+                    'sales.customer_id',
+                    'sales.sale_date',
+                    'sales.total_amount',
+                    'sales.status',
+                    'sales.created_at',
+                    DB::raw('COALESCE(customers.name, "-") as customer_name'),
+                ]);
+            // IMPORTANT: remove fixed orderBy here; let DataTables drive ordering
+            // ->orderByDesc('sales.sale_date')->orderByDesc('sales.created_at');
 
-            $json = DataTables::eloquent($query)
+            return DataTables::eloquent($query)
                 ->addIndexColumn()
+
+                // Global search from DataTables (search[value])
                 ->filter(function ($q) use ($request) {
+                    $global = trim((string) $request->input('search.value', ''));
+                    if ($global !== '') {
+                        $q->where(function ($w) use ($global) {
+                            $w->where('sales.code', 'like', "%{$global}%")
+                            ->orWhere('customers.name', 'like', "%{$global}%")
+                            ->orWhere('sales.status', 'like', "%{$global}%")
+                            ->orWhere('sales.sale_date', 'like', "%{$global}%");
+                        });
+                    }
+
+                    // Optional extra filters: q/status/date/customer
                     $search = trim((string) $request->input('q',''));
                     $status = trim((string) $request->input('status',''));
                     $from   = trim((string) $request->input('date_from',''));
@@ -45,8 +61,8 @@ class SaleController extends Controller
                     if ($search !== '') {
                         $q->where(function($w) use ($search){
                             $w->where('sales.code','like',"%{$search}%")
-                              ->orWhere('customers.name','like',"%{$search}%")
-                              ->orWhere('sales.status','like',"%{$search}%");
+                            ->orWhere('customers.name','like',"%{$search}%")
+                            ->orWhere('sales.status','like',"%{$search}%");
                         });
                     }
                     if ($status !== '') $q->where('sales.status',$status);
@@ -54,17 +70,34 @@ class SaleController extends Controller
                     if ($from   !== '') $q->whereDate('sales.sale_date','>=',$from);
                     if ($to     !== '') $q->whereDate('sales.sale_date','<=',$to);
                 })
-                ->editColumn('total_amount', fn($r)=>number_format((float)$r->total_amount,2,'.',''))
-                ->addColumn('items_count', fn($r)=>(int)($r->items_count ?? 0))
-                ->addColumn('action', fn($r)=>'<a href="javascript:show_view(\''.$r->id.'\')" title="View"><i class="fa fa-file-o text-success fa-lg mx-2"></i></a>')
+
+                // Map ordering for alias columns (so order works)
+                ->orderColumn('customer_name', function($q, $order) {
+                    $q->orderBy('customers.name', $order);
+                })
+                ->orderColumn('sale_date', function($q, $order) {
+                    $q->orderBy('sales.sale_date', $order)->orderBy('sales.created_at', $order);
+                })
+                ->orderColumn('items_count', function($q, $order) {
+                    $q->orderBy('items_count', $order);
+                })
+
+                // Present amount as number string (ordering uses DB column)
+                ->editColumn('total_amount', fn($r) => number_format((float)$r->total_amount, 2, '.', ''))
+
+                ->addColumn('items_count', fn($r) => (int)($r->items_count ?? 0))
+
+                ->addColumn('action', fn($r) =>
+                    '<a href="javascript:show_view(\''.$r->id.'\')" title="View"><i class="fa fa-file-o text-success fa-lg mx-2"></i></a>'
+                )
                 ->rawColumns(['action'])
                 ->toJson();
 
-            DB::commit();
-            return $json;
         } catch (\Throwable $e) {
-            DB::rollBack();
-            return response()->json(['message'=>'Load datatable failed','error'=>config('app.debug')?$e->getMessage():null],500);
+            return response()->json([
+                'message'=>'Load datatable failed',
+                'error'=>config('app.debug') ? $e->getMessage() : null
+            ], 500);
         }
     }
 

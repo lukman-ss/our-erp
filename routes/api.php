@@ -76,3 +76,17 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/sales/{id}',      [SaleController::class, 'update']);
     Route::delete('/sales/{id}',   [SaleController::class, 'destroy']);
 });
+
+
+use App\Http\Controllers\Backend\CustomerController;
+
+Route::middleware('auth:api')->group(function () {
+    // DataTables endpoint
+    Route::get('/customers/datatable', [CustomerController::class, 'index']);
+
+    // CRUD
+    Route::get('/customers/{id}', [CustomerController::class, 'show']);
+    Route::post('/customers', [CustomerController::class, 'store']);
+    Route::put('/customers/{id}', [CustomerController::class, 'update']);
+    Route::delete('/customers/{id}', [CustomerController::class, 'destroy']);
+});

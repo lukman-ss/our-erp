@@ -12,6 +12,10 @@ use Yajra\DataTables\Facades\DataTables;
 
 class CustomerController extends Controller
 {
+    /**
+     * GET /api/customers/datatable
+     * DataTables server-side
+     */
     public function index(Request $request): JsonResponse
     {
         $query = Customer::query()->orderByDesc('created_at');
@@ -29,28 +33,46 @@ class CustomerController extends Controller
             ->toJson();
     }
 
+    /**
+     * GET /api/customers/{id}
+     */
     public function show(string $id): JsonResponse
     {
-        return response()->json(Customer::findOrFail($id));
+        $customer = Customer::findOrFail($id);
+        return response()->json($customer);
     }
 
+    /**
+     * POST /api/customers
+     * Terima payload besar, simpan hanya kolom yang ada di DB.
+     */
     public function store(Request $request): JsonResponse
     {
-        $data = $request->validate([
+        // Validasi hanya kolom yang ada di DB
+        $request->validate([
             'name'    => ['required','string','max:255'],
             'email'   => ['nullable','email','max:255','unique:customers,email'],
             'phone'   => ['nullable','string','max:50'],
             'address' => ['nullable','string','max:500'],
         ]);
 
+        // Whitelist kolom agar field ekstra diabaikan
+        $data = collect($request->only(['name','email','phone','address']))
+            ->map(fn($v) => is_string($v) ? trim($v) : $v)
+            ->toArray();
+
         try {
             DB::beginTransaction();
             $customer = Customer::create($data);
             DB::commit();
 
-            return response()->json(['message' => 'Created', 'customer' => $customer], 201);
+            return response()->json([
+                'message'  => 'Created',
+                'customer' => $customer,
+            ], 201);
         } catch (\Throwable $e) {
             DB::rollBack();
+
             return response()->json([
                 'message' => 'Create failed',
                 'error'   => config('app.debug') ? $e->getMessage() : null,
@@ -58,11 +80,14 @@ class CustomerController extends Controller
         }
     }
 
+    /**
+     * PUT /api/customers/{id}
+     */
     public function update(Request $request, string $id): JsonResponse
     {
         $customer = Customer::findOrFail($id);
 
-        $data = $request->validate([
+        $request->validate([
             'name'    => ['sometimes','required','string','max:255'],
             'email'   => [
                 'nullable','email','max:255',
@@ -72,14 +97,23 @@ class CustomerController extends Controller
             'address' => ['nullable','string','max:500'],
         ]);
 
+        $data = collect($request->only(['name','email','phone','address']))
+            ->filter(fn($v) => !is_null($v)) // hanya update field yang dikirim
+            ->map(fn($v) => is_string($v) ? trim($v) : $v)
+            ->toArray();
+
         try {
             DB::beginTransaction();
             $customer->fill($data)->save();
             DB::commit();
 
-            return response()->json(['message' => 'Updated', 'customer' => $customer]);
+            return response()->json([
+                'message'  => 'Updated',
+                'customer' => $customer,
+            ]);
         } catch (\Throwable $e) {
             DB::rollBack();
+
             return response()->json([
                 'message' => 'Update failed',
                 'error'   => config('app.debug') ? $e->getMessage() : null,
@@ -87,6 +121,9 @@ class CustomerController extends Controller
         }
     }
 
+    /**
+     * DELETE /api/customers/{id}
+     */
     public function destroy(string $id): JsonResponse
     {
         $customer = Customer::findOrFail($id);
@@ -99,6 +136,7 @@ class CustomerController extends Controller
             return response()->json(['message' => 'Deleted']);
         } catch (\Throwable $e) {
             DB::rollBack();
+
             return response()->json([
                 'message' => 'Delete failed',
                 'error'   => config('app.debug') ? $e->getMessage() : null,

@@ -1,0 +1,1016 @@
+{
+	"info": {
+		"_postman_id": "4685fe27-5ab1-40d4-8d16-1922f6fc7481",
+		"name": "Laravel our-api Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26585294"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userId\":\"U1001\",\"amount\":150000,\"paymentMethod\":\"QRIS\"}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"lukman@lukman.com\",\n    \"password\" : \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log Out",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MTk0ODMsImV4cCI6MTc1NTUyMzA4MywibmJmIjoxNzU1NTE5NDgzLCJqdGkiOiJGOFVlaGNHekhsczQzMkdCIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.KPRiqPH8ACn4nCrbsHAtMA9HL4n4vZhIiw7vDsAJLV8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Me",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Master",
+			"item": [
+				{
+					"name": "Materials",
+					"item": [
+						{
+							"name": "Datatable",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"lukman@lukman.com\",\n    \"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/materials/datatable",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials",
+										"datatable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"code\": \"MTL-003\",\n  \"name\": \"Engine Oil\",\n  \"unit\": \"liter\",\n  \"cost_price\": 75000,\n  \"stock\": 100,\n  \"description\": \"Synthetic engine oil SAE 10W-40\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/materials",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"code\": \"MTL-003\",\n  \"name\": \"Engine Oil Premium\",\n  \"unit\": \"liter\",\n  \"cost_price\": 85000,\n  \"stock\": 120,\n  \"description\": \"Premium synthetic engine oil SAE 5W-30 with extended life\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/materials/0490af0a-0cf6-42af-9e66-39057fb9c105",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials",
+										"0490af0a-0cf6-42af-9e66-39057fb9c105"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Datatable",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"lukman@lukman.com\",\n    \"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/products/datatable",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"products",
+										"datatable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1Mjk2MjAsImV4cCI6MTc1NTUzMzIyMCwibmJmIjoxNzU1NTI5NjIwLCJqdGkiOiJ2eDhsOW12aEZRbTNVZGlyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.-gPKqkEmdHAO4d4oNTCYsMOoN-MGhtNGcM6aqRo7j80",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"sku\": \"PRD-003\",\n  \"name\": \"Electrical Service Kit\",\n  \"unit\": \"set\",\n  \"sell_price\": 275000,\n  \"stock\": 25,\n  \"description\": \"Basic electrical kit for light repairs\",\n  \"items\": [\n    { \"material_id\": \"ba94b13a-cd47-4afc-8b2a-31cdb40c6e1e\", \"qty\": 5, \"cost_price\": 25000 }\n  ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Electrical Service Kit Plus\",\n  \"sell_price\": 295000,\n  \"items\": [\n    { \"material_id\": \"ba94b13a-cd47-4afc-8b2a-31cdb40c6e1e\", \"qty\": 6, \"cost_price\": 26000 }\n  ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/products/bedbbb8d-7796-4569-af03-3d0ff98d4b2e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"products",
+										"bedbbb8d-7796-4569-af03-3d0ff98d4b2e"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Supplier",
+					"item": [
+						{
+							"name": "Datatable",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/suppliers/datatable",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"suppliers",
+										"datatable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"PT Sumber Makmur Jaya\",\n  \"contact_name\": \"Budi Santoso\",\n  \"phone\": \"+62-812-3456-7890\",\n  \"email\": \"contact@sumbermakmur.co.id\",\n  \"address\": \"Jl. Raya Industri No. 88, Bekasi\",\n  \"city\": \"Bekasi\",\n  \"status\": \"active\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/suppliers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"PT Sumber Makmur Abadi\",\n  \"contact_name\": \"Andi Wijaya\",\n  \"phone\": \"+62-877-6543-2100\",\n  \"email\": \"andi@sumbermakmur.co.id\",\n  \"address\": \"Jl. Baru Industri No. 12, Cikarang\",\n  \"city\": \"Cikarang\",\n  \"status\": \"inactive\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/suppliers/fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"suppliers",
+										"fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Datatable",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"lukman@lukman.com\",\n    \"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/materials/datatable",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials",
+										"datatable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"PT Sumber Makmur Jaya\",\n  \"contact_name\": \"Budi Santoso\",\n  \"phone\": \"+62-812-3456-7890\",\n  \"email\": \"contact@sumbermakmur.co.id\",\n  \"address\": \"Jl. Raya Industri No. 88, Bekasi\",\n  \"city\": \"Bekasi\",\n  \"status\": \"active\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/supplier",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"supplier"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"PT Sumber Makmur Abadi\",\n  \"contact_name\": \"Andi Wijaya\",\n  \"phone\": \"+62-877-6543-2100\",\n  \"email\": \"andi@sumbermakmur.co.id\",\n  \"address\": \"Jl. Baru Industri No. 12, Cikarang\",\n  \"city\": \"Cikarang\",\n  \"status\": \"inactive\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/suppliers/fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"suppliers",
+										"fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pembelian",
+			"item": [
+				{
+					"name": "Pembelian Material",
+					"item": [
+						{
+							"name": "Datatable",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"lukman@lukman.com\",\n    \"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/materials/datatable",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials",
+										"datatable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"code\": \"PO-2025-001\",\n  \"supplier_id\": \"fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39\",\n  \"purchase_date\": \"2025-08-18\",\n  \"status\": \"pending\",\n  \"create_batches\": true,\n  \"items\": [\n    {\n      \"material_id\": \"0490af0a-0cf6-42af-9e66-39057fb9c105\",\n      \"qty\": 10,\n      \"unit_cost\": 15000\n    },\n    {\n      \"material_id\": \"ba94b13a-cd47-4afc-8b2a-31cdb40c6e1e\",\n      \"qty\": 5,\n      \"unit_cost\": 22000\n    }\n  ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/purchases",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"purchases"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"PT Sumber Makmur Abadi\",\n  \"contact_name\": \"Andi Wijaya\",\n  \"phone\": \"+62-877-6543-2100\",\n  \"email\": \"andi@sumbermakmur.co.id\",\n  \"address\": \"Jl. Baru Industri No. 12, Cikarang\",\n  \"city\": \"Cikarang\",\n  \"status\": \"inactive\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/suppliers/fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"suppliers",
+										"fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Manufactur",
+			"item": [
+				{
+					"name": "Produksi Produk",
+					"item": [
+						{
+							"name": "Datatable",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"lukman@lukman.com\",\n    \"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/materials/datatable",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials",
+										"datatable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"code\": \"MO-2025-0002\",\n  \"product_id\": \"bedbbb8d-7796-4569-af03-3d0ff98d4b2e\",\n  \"qty_planned\": 10,\n  \"status\": \"draft\",\n  \"scheduled_at\": \"2025-08-20 08:00:00\",\n  \"notes\": \"Produksi engine assembly dengan 1 material\",\n  \"materials\": [\n    {\n      \"material_id\": \"ba94b13a-cd47-4afc-8b2a-31cdb40c6e1e\",\n      \"qty_required\": 6.0000,\n      \"unit_cost\": 26000.00\n    }\n  ],\n  \"products\": [\n    {\n      \"product_id\": \"bedbbb8d-7796-4569-af03-3d0ff98d4b2e\",\n      \"qty\": 10,\n      \"unit_cost\": 0,\n      \"total_cost\": 0,\n      \"produced_at\": null\n    }\n  ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/productions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"productions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"PT Sumber Makmur Abadi\",\n  \"contact_name\": \"Andi Wijaya\",\n  \"phone\": \"+62-877-6543-2100\",\n  \"email\": \"andi@sumbermakmur.co.id\",\n  \"address\": \"Jl. Baru Industri No. 12, Cikarang\",\n  \"city\": \"Cikarang\",\n  \"status\": \"inactive\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/suppliers/fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"suppliers",
+										"fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Penjualan",
+			"item": [
+				{
+					"name": "Penjualan Produk",
+					"item": [
+						{
+							"name": "Datatable",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"lukman@lukman.com\",\n    \"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/materials/datatable",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"materials",
+										"datatable"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"code\": \"MO-2025-0002\",\n  \"product_id\": \"bedbbb8d-7796-4569-af03-3d0ff98d4b2e\",\n  \"qty_planned\": 10,\n  \"status\": \"draft\",\n  \"scheduled_at\": \"2025-08-20 08:00:00\",\n  \"notes\": \"Produksi engine assembly dengan 1 material\",\n  \"materials\": [\n    {\n      \"material_id\": \"ba94b13a-cd47-4afc-8b2a-31cdb40c6e1e\",\n      \"qty_required\": 6.0000,\n      \"unit_cost\": 26000.00\n    }\n  ],\n  \"products\": [\n    {\n      \"product_id\": \"bedbbb8d-7796-4569-af03-3d0ff98d4b2e\",\n      \"qty\": 10,\n      \"unit_cost\": 0,\n      \"total_cost\": 0,\n      \"produced_at\": null\n    }\n  ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/productions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"productions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MjUyMzcsImV4cCI6MTc1NTUyODgzNywibmJmIjoxNzU1NTI1MjM3LCJqdGkiOiIxTlRZRTNYaWNJcHZKUWJyIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.WgMNw9AQ0opK4jfTo3uY3VaPk-EGQO6jO2puuEupAwc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"PT Sumber Makmur Abadi\",\n  \"contact_name\": \"Andi Wijaya\",\n  \"phone\": \"+62-877-6543-2100\",\n  \"email\": \"andi@sumbermakmur.co.id\",\n  \"address\": \"Jl. Baru Industri No. 12, Cikarang\",\n  \"city\": \"Cikarang\",\n  \"status\": \"inactive\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/suppliers/fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"suppliers",
+										"fdebe9ac-3f69-4f3b-9872-1ca8c14c0d39"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTU1MzEzODQsImV4cCI6MTc1NTUzNDk4NCwibmJmIjoxNzU1NTMxMzg0LCJqdGkiOiJuY3VTYmdPQ1gwNWdhcFdOIiwic3ViIjoiZjg2NjVlMmMtNTA2Zi00OGY5LTkxZWUtMzQyYmY1ZjE1NWRlIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.0EQG-v4UjmZqg6aFZnFSdX56iiz3NC3Ww6bDk0tu6C8",
+			"type": "default"
+		}
+	]
+}
